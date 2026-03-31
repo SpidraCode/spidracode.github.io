@@ -135,6 +135,62 @@
       box-shadow: 0 0 25px rgba(236,72,153,0.9);
     }
 
+    .btn-pro {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 40px;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+  border-radius: 12px;
+  background: linear-gradient(45deg, #38bdf8, #ec4899);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+/* Glow pulsante */
+.btn-pro::before {
+  content: "";
+  position: absolute;
+  width: 300%;
+  height: 300%;
+  background: radial-gradient(circle, rgba(56,189,248,0.5), transparent);
+  top: -100%;
+  left: -100%;
+  animation: glowMove 3s infinite linear;
+}
+
+@keyframes glowMove {
+  0% { transform: translate(0,0); }
+  50% { transform: translate(50%,50%); }
+  100% { transform: translate(0,0); }
+}
+
+/* Hover */
+.btn-pro:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 30px rgba(236,72,153,1);
+}
+
+/* Click */
+.btn-pro:active {
+  transform: scale(0.95);
+}
+
+/* Icono animado */
+.icon {
+  display: inline-block;
+  animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
     .fade {
       opacity: 0;
       transform: translateY(40px);
@@ -245,7 +301,9 @@
   <section id="contacto" class="fade">
     <h2>Contacto</h2>
     <p>¿Tenés un proyecto? Completá el formulario:</p>
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfiuxkyto6sTDmz4gSz7J4gXdv45Tx7p9O-gZlmvjS8YsNnzw/viewform?usp=header" target="_blank">
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfiuxkyto6sTDmz4gSz7J4gXdv45Tx7p9O-gZlmvjS8YsNnzw/viewform?usp=header" target="_blank" class="btn-pro">
+    <span class="icon">🚀</span>
+    Enviar proyecto
     <button>Enviar proyecto</button>
     </a>
   </section>
@@ -254,12 +312,14 @@
   <section>
   <h2>Trabajá con nosotros</h2>
   <p>¿Sos desarrollador? Sumate a SpidraCode:</p>
-  <a href="https://docs.google.com/forms/d/e/1FAIpQLSer9dAg1qLsAKuAKKX0BYHQ1MVWBgGEy6ePuiFNAAhS4FnYeg/viewform?usp=header" target="_blank">
-    <button>Enviar CV</button>
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLSer9dAg1qLsAKuAKKX0BYHQ1MVWBgGEy6ePuiFNAAhS4FnYeg/viewform?usp=header" target="_blank" class="btn-pro">
+  <span class="icon">💻</span>
+  Enviar CV
   </a>
 </section>
 
   <footer>
+    <p>📧 Email: <a href="mailto:spidracode@gmail.com">spidracode@gmail.com</a></p>
     <p>© 2026 SpidraCode</p>
   </footer>
 
