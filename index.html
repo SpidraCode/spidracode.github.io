@@ -3,21 +3,77 @@
 <head>
   <meta charset="UTF-8">
   <title>SpidraCode</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #0f172a;
+      color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #020617;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #38bdf8;
+      margin: 0;
+    }
+
+    section {
+      padding: 20px;
+    }
+
+    .servicios {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+    }
+
+    .card {
+      background-color: #1e293b;
+      padding: 15px;
+      border-radius: 10px;
+      width: 200px;
+      text-align: center;
+    }
+
+    footer {
+      text-align: center;
+      padding: 10px;
+      background-color: #020617;
+    }
+  </style>
 </head>
+
 <body>
 
-  <h1>SpidraCode</h1>
-  <p>Soluciones en desarrollo web, apps y análisis de datos.</p>
+  <header>
+    <h1>SpidraCode</h1>
+    <p>Soluciones en desarrollo web, apps y datos</p>
+  </header>
 
-  <h2>Servicios</h2>
-  <ul>
-    <li>Desarrollo de sitios web</li>
-    <li>Desarrollo de aplicaciones</li>
-    <li>Análisis de datos</li>
-  </ul>
+  <section>
+    <h2>Servicios</h2>
+    <div class="servicios">
+      <div class="card">🌐 Desarrollo Web</div>
+      <div class="card">📱 Aplicaciones</div>
+      <div class="card">📊 Análisis de Datos</div>
+    </div>
+  </section>
 
-  <h2>Contacto</h2>
-  <p>Próximamente formulario de contacto</p>
+  <section>
+    <h2>Contacto</h2>
+    <p>Próximamente formulario de contacto</p>
+  </section>
+
+  <footer>
+    <p>© 2026 SpidraCode</p>
+  </footer>
 
 </body>
 </html>
