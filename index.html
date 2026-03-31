@@ -1,380 +1,173 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SpidraCode</title>
 
+  <!-- Fuente futurista -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
   <style>
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.75);
-      z-index: -1;
-    }
-
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
+      background: #0f172a;
       color: white;
-    
-      background: url('spidracodefondo.png') no-repeat center center fixed;
-      background-size: cover;
-    }
-
-    /* NAVBAR */
-    nav {
-      position: fixed;
-      width: 100%;
-      top: 0;
-      background: rgba(2,6,23,0.9);
-      padding: 10px 0;
-      text-align: center;
-      z-index: 1000;
-    }
-
-    nav a {
-      color: white;
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    nav a:hover {
-      color: #38bdf8;
-    }
-
-    header {
-      padding: 100px 20px 60px;
-      text-align: center;
-      background: linear-gradient(90deg, #020617, #0f172a);
-    }
-
-    h1 {
-      text-shadow: 0 0 15px #38bdf8, 0 0 25px #ec4899;
-      color: #38bdf8;
-      font-size: 42px;
-      margin-bottom: 10px;
-    }
-
-    p {
-      color: #cbd5f5;
     }
 
     section {
-      max-width: 1000px;
-      margin: auto;
+      text-align: center;
       padding: 60px 20px;
     }
 
-    h2 {
-      color: #38bdf8;
-      margin-bottom: 20px;
-      text-align: center;
-    }
-
-    .servicios {
+    /* HEADER */
+    header {
+      position: relative;
+      height: 300px;
+      overflow: hidden;
       display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
+      flex-direction: column;
       justify-content: center;
+      text-align: center;
     }
 
-    .card {
-      background: #1e293b;
-      padding: 25px;
-      border-radius: 12px;
-      width: 250px;
-      text-align: center;
+    #web-bg {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      opacity: 0.3;
+    }
+
+    header h1 {
+      position: relative;
+      z-index: 2;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 70px;
+      animation: glow 2s infinite alternate;
+    }
+
+    header p {
+      position: relative;
+      z-index: 2;
+      font-size: 24px;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #38bdf8; }
+      to { text-shadow: 0 0 30px #ec4899; }
+    }
+
+    /* BOTONES */
+    .btn-pro {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 15px 30px;
+      font-size: 18px;
+      font-weight: bold;
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      background: linear-gradient(45deg, #38bdf8, #ec4899);
+      margin-top: 20px;
       transition: 0.3s;
     }
 
-    .card:hover {
-      transform: translateY(-8px) scale(1.03);
-      background: #334155;
-    }
-
-    iframe {
-      width: 100%;
-      height: 700px;
-      border: none;
-      border-radius: 10px;
-      margin-top: 20px;
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: #020617;
-    }
-
-    .btn {
-      background: linear-gradient(45deg, #38bdf8, #ec4899);
-      color: white;
-      padding: 16px 30px;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 18px;
-      display: inline-block;
-      margin-top: 20px;
-      box-shadow: 0 0 15px rgba(56,189,248,0.6);
-      transition: all 0.3s ease;
-    }
-    
-    .btn:hover {
+    .btn-pro:hover {
       transform: scale(1.1);
-      box-shadow: 0 0 25px rgba(236,72,153,0.9);
+      box-shadow: 0 0 20px #ec4899;
     }
 
-    .btn-pro {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 18px 40px;
-  font-size: 20px;
-  font-weight: bold;
-  color: white;
-  text-decoration: none;
-  border-radius: 12px;
-  background: linear-gradient(45deg, #38bdf8, #ec4899);
-  backdrop-filter: blur(10px);
-  overflow: hidden;
-  transition: all 0.3s ease;
-}
-
-/* Glow pulsante */
-.btn-pro::before {
-  content: "";
-  position: absolute;
-  width: 300%;
-  height: 300%;
-  background: radial-gradient(circle, rgba(56,189,248,0.5), transparent);
-  top: -100%;
-  left: -100%;
-  animation: glowMove 3s infinite linear;
-}
-
-@keyframes glowMove {
-  0% { transform: translate(0,0); }
-  50% { transform: translate(50%,50%); }
-  100% { transform: translate(0,0); }
-}
-
-/* Hover */
-.btn-pro:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 30px rgba(236,72,153,1);
-}
-
-/* Click */
-.btn-pro:active {
-  transform: scale(0.95);
-}
-
-/* Icono animado */
-.icon {
-  display: inline-block;
-  animation: bounce 1.5s infinite;
-}
-
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-5px); }
-}
-
-    .fade {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all 0.8s ease;
+    .btn-pro:active {
+      transform: scale(0.95);
     }
 
-    .fade.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    h1 {
-      text-shadow: 0 0 10px #38bdf8;
+    /* SECCIONES */
+    h2 {
+      font-family: 'Orbitron', sans-serif;
+      margin-bottom: 20px;
     }
 
     /* RESPONSIVE */
-@media (max-width: 768px) {
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 40px;
+      }
 
-  nav {
-    font-size: 14px;
-  }
+      header p {
+        font-size: 18px;
+      }
 
-  nav a {
-    display: inline-block;
-    margin: 5px;
-  }
+      .btn-pro {
+        width: 90%;
+      }
+    }
 
-  header {
-    padding: 120px 15px 60px;
-  }
-
-  h1 {
-    font-size: 28px;
-  }
-
-  section {
-    padding: 40px 15px;
-  }
-
-  .servicios {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .card {
-    width: 90%;
-  }
-
-  iframe {
-    height: 600px;
-  }
-
-}
-
-header {
-  position: relative;
-  height: 300px;
-  overflow: hidden;
-}
-
-/* CANVAS (telaraña) */
-#web-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-}
-
-/* CONTENIDO ARRIBA */
-header h1,
-header p,
-header .btn {
-  position: relative;
-  z-index: 2;
-}
-    
   </style>
 </head>
 
 <body>
 
-  <!-- NAVBAR -->
-  <nav>
-    <a href="#inicio">Inicio</a>
-    <a href="#nosotros">Nosotros</a>
-    <a href="#servicios">Servicios</a>
-    <a href="#trabajo">Cómo trabajamos</a>
-    <a href="#contacto">Contacto</a>
-  </nav>
+<!-- HEADER -->
+<header id="inicio">
+  <canvas id="web-bg"></canvas>
 
-  <!-- HEADER -->
-  <header id="inicio">
-    <canvas id="web-bg"></canvas>
-    <h1>SpidraCode</h1>
-    <p>Desarrollo web y apps modernas para potenciar tu negocio.</p>
-    <a href="#contacto" class="btn">Solicitar proyecto</a>
-  </header>
+  <h1>SpidraCode</h1>
+  <p>Desarrollo web y apps modernas para potenciar tu negocio</p>
 
-  <!-- QUIENES SOMOS -->
-  <section id="nosotros" class="fade">
-    <h2>¿Quiénes somos?</h2>
-    <p>
-      SpidraCode es un equipo enfocado en el desarrollo de soluciones tecnológicas modernas.
-      Trabajamos con empresas y emprendedores para transformar ideas en productos digitales reales.
-    </p>
-  </section>
+  <a href="#contacto" class="btn-pro">🚀 Solicitar proyecto</a>
+</header>
 
-  <!-- SERVICIOS -->
-  <section id="servicios" class="fade">
-    <h2>Servicios</h2>
-    <div class="servicios">
-      <div class="card">🌐 Desarrollo Web</div>
-      <div class="card">📱 Aplicaciones</div>
-      <div class="card">📊 Análisis de Datos</div>
-    </div>
-  </section>
-
-  <!-- COMO TRABAJAMOS -->
-  <section id="trabajo" class="fade">
-    <h2>¿Cómo trabajamos?</h2>
-    <ol>
-      <li>Recibimos tu idea</li>
-      <li>Analizamos el proyecto</li>
-      <li>Definimos solución y presupuesto</li>
-      <li>Desarrollamos</li>
-      <li>Probamos y ajustamos</li>
-      <li>Entregamos</li>
-    </ol>
-  </section>
-
-  <!-- FORM CLIENTES -->
-  <section id="contacto" class="fade">
-    <h2>Contacto</h2>
-    <p>¿Tenés un proyecto? Completá el formulario:</p>
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfiuxkyto6sTDmz4gSz7J4gXdv45Tx7p9O-gZlmvjS8YsNnzw/viewform?usp=header" target="_blank" class="btn-pro">
-    <span class="icon">🚀</span>
-    Enviar proyecto
-    </a>
-  </section>
-
-  <!-- FORM DEVS -->
-  <section>
-  <h2>Trabajá con nosotros</h2>
-  <p>¿Sos desarrollador? Sumate a SpidraCode:</p>
-  <a href="https://docs.google.com/forms/d/e/1FAIpQLSer9dAg1qLsAKuAKKX0BYHQ1MVWBgGEy6ePuiFNAAhS4FnYeg/viewform?usp=header" target="_blank" class="btn-pro">
-  <span class="icon">💻</span>
-  Enviar CV
-  </a>
+<!-- QUIENES SOMOS -->
+<section>
+  <h2>Quiénes somos</h2>
+  <p>En SpidraCode desarrollamos soluciones digitales modernas combinando diseño, tecnología y eficiencia.</p>
 </section>
 
-  <footer>
-    <p>📧 Email: <a href="mailto:spidracode@gmail.com">spidracode@gmail.com</a></p>
-    <p>© 2026 SpidraCode</p>
-  </footer>
+<!-- SERVICIOS -->
+<section>
+  <h2>Servicios</h2>
+  <p>✔ Desarrollo de páginas web</p>
+  <p>✔ Aplicaciones móviles</p>
+  <p>✔ Soluciones tecnológicas personalizadas</p>
+</section>
 
-<script>
-  const faders = document.querySelectorAll('.fade');
+<!-- CONTACTO -->
+<section id="contacto">
+  <h2>Contacto</h2>
+  <p>¿Tenés una idea? Nosotros la hacemos realidad.</p>
 
-  const appearOnScroll = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  });
+  <a href="LINK_FORM_CLIENTES" target="_blank" class="btn-pro">
+    🚀 Enviar proyecto
+  </a>
 
-  faders.forEach(fader => {
-    appearOnScroll.observe(fader);
-  });
-</script>
+  <p>¿Sos desarrollador? Unite a nuestro equipo.</p>
+
+  <a href="LINK_FORM_DEVS" target="_blank" class="btn-pro">
+    💻 Enviar CV
+  </a>
+
+  <p style="margin-top:20px;">📧 spidracode@gmail.com</p>
+</section>
 
 <script>
 const canvas = document.getElementById("web-bg");
 const ctx = canvas.getContext("2d");
+const header = document.querySelector("header");
 
-canvas.width = window.innerWidth;
-canvas.height = 400;
+function resizeCanvas() {
+  canvas.width = header.offsetWidth;
+  canvas.height = header.offsetHeight;
+}
+
+resizeCanvas();
+window.addEventListener("resize", resizeCanvas);
 
 let nodes = [];
 
-for (let i = 0; i < 40; i++) {
+for (let i = 0; i < 25; i++) {
   nodes.push({
     x: Math.random() * canvas.width,
     y: Math.random() * canvas.height,
@@ -405,7 +198,7 @@ function animate() {
       let dy = nodes[i].y - nodes[j].y;
       let dist = Math.sqrt(dx * dx + dy * dy);
 
-      if (dist < 120) {
+      if (dist < 80) {
         ctx.beginPath();
         ctx.moveTo(nodes[i].x, nodes[i].y);
         ctx.lineTo(nodes[j].x, nodes[j].y);
@@ -420,6 +213,6 @@ function animate() {
 
 animate();
 </script>
-  
+
 </body>
 </html>
