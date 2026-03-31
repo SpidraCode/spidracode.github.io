@@ -2,86 +2,166 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>SpidraCode</title>
+  <title>HydraCode</title>
 
   <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      font-family: Arial, sans-serif;
-      background-color: #0f172a;
-      color: white;
       margin: 0;
-      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #0f172a;
+      color: white;
+    }
+
+    /* NAVBAR */
+    nav {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      background: rgba(2,6,23,0.9);
+      padding: 10px 0;
+      text-align: center;
+      z-index: 1000;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: #38bdf8;
     }
 
     header {
-      background-color: #020617;
-      padding: 20px;
+      padding: 100px 20px 60px;
       text-align: center;
+      background: linear-gradient(90deg, #020617, #0f172a);
     }
 
     h1 {
       color: #38bdf8;
-      margin: 0;
+      font-size: 42px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #cbd5f5;
     }
 
     section {
-      padding: 20px;
-    }
-
-    .servicios {
-      display: flex;
-      gap: 15px;
-      justify-content: center;
-    }
-
-    .card {
-      background-color: #1e293b;
-      padding: 15px;
-      border-radius: 10px;
-      width: 200px;
-      text-align: center;
-    }
-
-    footer {
-      text-align: center;
-      padding: 10px;
-      background-color: #020617;
-    }
-
-    button {
-      background-color: #38bdf8;
-      border: none;
-      padding: 10px 15px;
-      color: black;
-      font-weight: bold;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    
-    button:hover {
-      background-color: #0ea5e9;
-    }
-
-    section {
-      max-width: 900px;
+      max-width: 1000px;
       margin: auto;
+      padding: 60px 20px;
     }
 
     h2 {
       color: #38bdf8;
+      margin-bottom: 20px;
+      text-align: center;
     }
-    
+
+    .servicios {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .card {
+      background: #1e293b;
+      padding: 25px;
+      border-radius: 12px;
+      width: 250px;
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-8px) scale(1.03);
+      background: #334155;
+    }
+
+    iframe {
+      width: 100%;
+      height: 700px;
+      border: none;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #020617;
+    }
+
+    .btn {
+      background: #38bdf8;
+      color: black;
+      padding: 12px 20px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      margin-top: 20px;
+    }
+
+    .btn:hover {
+      background: #0ea5e9;
+    }
+
+    .fade {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease;
+    }
+
+    .fade.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    h1 {
+      text-shadow: 0 0 10px #38bdf8;
+    }
   </style>
 </head>
 
 <body>
 
-  <header>
+  <!-- NAVBAR -->
+  <nav>
+    <a href="#inicio">Inicio</a>
+    <a href="#nosotros">Nosotros</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#trabajo">Cómo trabajamos</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+
+  <!-- HEADER -->
+  <header id="inicio">
     <h1>SpidraCode</h1>
-    <p>Soluciones en desarrollo web, apps y datos</p>
+    <p>Desarrollo web, aplicaciones y soluciones de datos</p>
+    <a href="#contacto" class="btn">Solicitar proyecto</a>
   </header>
 
-  <section>
+  <!-- QUIENES SOMOS -->
+  <section id="nosotros" class="fade">
+    <h2>¿Quiénes somos?</h2>
+    <p>
+      SpidraCode es un equipo enfocado en el desarrollo de soluciones tecnológicas modernas.
+      Trabajamos con empresas y emprendedores para transformar ideas en productos digitales reales.
+    </p>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section id="servicios" class="fade">
     <h2>Servicios</h2>
     <div class="servicios">
       <div class="card">🌐 Desarrollo Web</div>
@@ -90,33 +170,21 @@
     </div>
   </section>
 
-  <section>
-  <h2>¿Quiénes somos?</h2>
-  <p>
-    En HydraCode somos un equipo enfocado en el desarrollo de soluciones tecnológicas a medida.
-    Nos especializamos en la creación de sitios web, aplicaciones y herramientas de análisis de datos,
-    ayudando a empresas y emprendedores a llevar sus ideas al siguiente nivel.
-  </p>
+  <!-- COMO TRABAJAMOS -->
+  <section id="trabajo" class="fade">
+    <h2>¿Cómo trabajamos?</h2>
+    <ol>
+      <li>Recibimos tu idea</li>
+      <li>Analizamos el proyecto</li>
+      <li>Definimos solución y presupuesto</li>
+      <li>Desarrollamos</li>
+      <li>Probamos y ajustamos</li>
+      <li>Entregamos</li>
+    </ol>
+  </section>
 
-  <p>
-    Nuestro enfoque se basa en la calidad, la eficiencia y la comunicación constante con el cliente,
-    asegurando resultados que realmente aporten valor.
-  </p>
-</section>
-
-  <section>
-  <h2>¿Cómo trabajamos?</h2>
-  <ol>
-    <li>Recibimos tu idea o proyecto</li>
-    <li>Analizamos los requerimientos</li>
-    <li>Definimos una solución y presupuesto</li>
-    <li>Desarrollamos el proyecto</li>
-    <li>Realizamos pruebas y ajustes</li>
-    <li>Entregamos el producto final</li>
-  </ol>
-</section>
-  
-  <section>
+  <!-- FORM CLIENTES -->
+  <section id="contacto" class="fade">
     <h2>Contacto</h2>
     <p>¿Tenés un proyecto? Completá el formulario:</p>
     <a href="https://docs.google.com/forms/d/e/1FAIpQLSfiuxkyto6sTDmz4gSz7J4gXdv45Tx7p9O-gZlmvjS8YsNnzw/viewform?usp=header" target="_blank">
@@ -124,6 +192,7 @@
     </a>
   </section>
 
+  <!-- FORM DEVS -->
   <section>
   <h2>Trabajá con nosotros</h2>
   <p>¿Sos desarrollador? Sumate a SpidraCode:</p>
@@ -131,10 +200,26 @@
     <button>Enviar CV</button>
   </a>
 </section>
-  
+
   <footer>
     <p>© 2026 SpidraCode</p>
   </footer>
 
+<script>
+  const faders = document.querySelectorAll('.fade');
+
+  const appearOnScroll = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  });
+
+  faders.forEach(fader => {
+    appearOnScroll.observe(fader);
+  });
+</script>
+  
 </body>
 </html>
